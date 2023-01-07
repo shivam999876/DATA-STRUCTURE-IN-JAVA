@@ -1,0 +1,49 @@
+class Node
+{
+	int data;
+	Node next;
+	Node bottom;
+	
+	Node(int d)
+	{
+		data = d;
+		next = null;
+		bottom = null;
+	}
+}
+*/
+/*  Function which returns the  root of 
+    the flattened linked list. */
+class GfG
+{
+    Node flatten(Node root)
+    {
+        
+	   if(root==null || root.next==null)
+	       return root;
+	
+	       root.next = flatten(root.next);
+	       root = merger(root, root.next);
+	
+	        return root;
+    }
+    
+    Node merger(Node x, Node y)
+    {
+        if(x==null) return y;
+        if(y==null) return x;
+        
+        Node ans;
+        if(x.data <= y.data)
+        {
+            ans = x;
+            ans.bottom = merger(x.bottom,y);
+        }
+        else
+        {
+            ans = y;
+            ans.bottom = merger(x, y.bottom);
+        }
+        return ans;
+    }
+}
