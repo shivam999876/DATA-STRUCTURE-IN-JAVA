@@ -1,0 +1,13 @@
+class Solution{
+    public void toSumTree(Node root){
+         solve(root);
+    }
+      int solve(Node root)
+    {
+        if(root==null)
+        return 0;
+        int old_val = root.data;
+        root.data = solve(root.left) + solve(root.right);
+        return old_val+root.data;
+    }
+}
