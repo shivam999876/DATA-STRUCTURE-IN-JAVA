@@ -1,0 +1,29 @@
+//Java code to demonstrate star patterns using Recursion
+import java.util.*;
+public class SimplePyramidPattern2{
+    //Function to print a row
+    static void printRow(int num){
+        //Base case
+        if(num == 0)
+            return;
+            System.out.print("*");
+            //Recursively calling printRows()
+            printRow(num - 1);
+    }
+        //Function to print the pattern
+        static void pattern(int n, int i){
+            //Base case
+            if(n == 0)
+            return;
+            printRow(i);
+            System.out.println();
+            //Recursively caling pattern()
+            pattern(n - 1, i + 1);
+        }
+    //Driver code
+    public static void main(String args[]){
+         Scanner sc = new Scanner(System.in);
+         int n = sc.nextInt();
+         pattern(n, 1);
+    }
+}
