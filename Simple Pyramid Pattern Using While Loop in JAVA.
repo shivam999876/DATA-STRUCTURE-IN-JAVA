@@ -1,0 +1,21 @@
+//Java program to print simple pyramid patterns using while loop 
+import java.util.*;
+public class SimplePyramidPattern1{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        int  n = sc.nextInt();
+        int r = 1, c = 0;
+        //The While loop checks the conditions until the condition is false.If iit is true then enters in to loop and executes the statements
+        while(r <= n){
+            while(c <= r - 1){
+                //Printing the required patterns
+                System.out.print("*");
+                c++;
+            }
+            r++;
+            c = 0;
+            //New line after each row 
+            System.out.println();
+        }
+    }
+}
