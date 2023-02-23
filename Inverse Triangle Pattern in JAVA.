@@ -1,0 +1,28 @@
+//Java code to demonstrate star pattern
+import java.util.*;
+public class Pattern{
+    //Function to demonstrate printing pattern
+    public static void printStars(int n){
+        //Outer loop to handle number of rows n in this case
+        for(int i = 0; i < n ; i++){
+            //Inner loop  to handle number of columns values changing according to outer loop
+            for(int j = 2*(n-i); j >= 0; j--){
+                //Printing spaces
+                System.out.print(" ");
+            }
+            //Inner loop to handle number of columns values changing according to outer loop
+            for(int j = 0; j <= i; j++){
+                //Printing stars
+                System.out.print("* ");
+            }
+            //Ending line after each row
+            System.out.println();
+        }
+    }
+    //Driver Function
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        printStars(n);
+    }
+}
