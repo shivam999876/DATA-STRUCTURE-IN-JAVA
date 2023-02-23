@@ -1,0 +1,42 @@
+//Java code to demonstrate star pattern using recursion
+import java.util.*;
+public class Pattern1{
+    // Function to print spaces
+    static void printSpace(int space){
+        //Base case
+        if(space == 0){
+            return;
+        }
+        System.out.print(" " + " ");
+        //Recursivelly calling print spaces
+        printSpace(space - 1);
+    }
+    //Function to print stars
+    static void printStars(int star){
+        //Base case
+        if(star == 0){
+            return;
+        }
+        System.out.print("* ");
+        //Recursivelly calling printStars()
+        printStars(star - 1);
+    }
+    //Function to print the pattern
+    static void pattern(int n, int num){
+        //Base case
+        if(n == 0){
+            return;
+        }
+        printSpace(n - 1);
+        printStars(num - n + 1);
+        System.out.println();
+        //Recursivelly calling pattern()
+        pattern(n - 1, num);
+    }
+    //Driver code
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        pattern(n, n);
+    }
+}
