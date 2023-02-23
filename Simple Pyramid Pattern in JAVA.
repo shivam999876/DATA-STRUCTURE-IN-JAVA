@@ -1,0 +1,30 @@
+import java.util.*;
+//Java code to demonstrate Simple Pyramid Pattern
+public class SimplePyramidPattern{
+    //Function to demonstrate printing pattern
+    public static void printStars(int n){
+        //Outer loop to handle number of rows n in this case
+        for(int i = 0; i < n; i++){
+            //Inner loop to handle number of columns values changing according to the outer loop
+            for(int j = 0; j <= i; j++){
+                //Printing stars 
+                System.out.print("*");
+            }
+            //Ending line after each row
+            System.out.println();
+        }
+    }
+    //Driver Functions
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        printStars(n);
+    }
+}
+// OUTPUT
+// *
+// **
+// ***
+// ****
+// *****
+// For n = 5
