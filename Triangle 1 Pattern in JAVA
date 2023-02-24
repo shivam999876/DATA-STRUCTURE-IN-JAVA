@@ -1,0 +1,35 @@
+//Java code to demonstrate Triangle Pattern
+/* For n = 5
+    * 
+   * * 
+  * * * 
+ * * * * 
+* * * * * 
+*/
+import java.util.*;
+public class TrianglePattern{
+    //Function to demonstrate printing patterns
+public static void printTriangle(int n){
+    //Outer loop to handle number spaces values changing according to requirements
+    for(int i = 0; i < n; i++){
+        //Inner loop to handle number spaces values changing according to requirements
+        for(int j = n - i; j > 1; j--){
+            //Printing Spaces
+            System.out.print(" ");
+        }
+        //Inner loop to handle number of columns values changing according to outer loop
+        for(int j = 0; j <= i; j++){
+            //Printing Stars
+            System.out.print("* ");
+        }
+        //ending line after each row
+        System.out.println();
+    }
+}
+    //Driver code
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        printTriangle(n);
+    }
+}
