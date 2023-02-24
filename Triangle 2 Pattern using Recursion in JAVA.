@@ -1,0 +1,46 @@
+//Java code to demonstrate Triangle Pattern using recursion
+/* For n = 5
+    * 
+   * * 
+  * * * 
+ * * * * 
+* * * * * 
+*/
+import java.util.*;
+public class TrianglePattern1{
+    //Function to print space
+static void printSpace(int space){
+    //Base case
+    if(space == 0)
+    return;
+    System.out.print(" ");
+    //recursively calling printSpace()
+    printSpace(space - 1);
+}
+//Function to print asterisks
+static void printStar(int asterisk){
+    //Base Case
+    if(asterisk == 0)
+        return;
+        System.out.print("* ");
+        //Recursively calling printStar()
+        printStar(asterisk - 1);
+    }
+    //Function to print the pattern 
+static void pattern(int n, int num){
+        //Base Case
+        if(n == 0)
+        return;
+        printSpace(n - 1);
+        printStar(num - n + 1);
+        System.out.println(" ");
+        //Recursivelly calling pattern()
+        pattern(n - 1, num);
+    }
+    //Driver Code
+public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        pattern(n, n);
+    }
+}
