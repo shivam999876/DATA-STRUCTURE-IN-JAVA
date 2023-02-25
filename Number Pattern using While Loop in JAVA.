@@ -1,0 +1,28 @@
+//Java code to demonstrate Number Pattern Using While Loop
+//For n = 5
+// 1 
+// 1 2 
+// 1 2 3 
+// 1 2 3 4 
+// 1 2 3 4 5 
+import java.util.*;
+public class NumberPattern1{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int r = 1, c= 1;
+        //The While loop checks the condition untill the condition is false.
+        //If it is true then ener in to loop and execute the statements.
+        while(r <= n){
+            while(c <= r){
+                //Printing the required pattern
+                System.out.print(c+" ");
+                c++;
+            }
+            r++;
+            c = 1;
+            //new line after each row
+            System.out.println();
+        }
+    }
+}
