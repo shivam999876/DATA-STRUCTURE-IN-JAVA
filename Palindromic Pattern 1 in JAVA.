@@ -1,0 +1,28 @@
+//For n = 5
+//     11
+//    2112
+//   321123
+//  43211234
+// 5432112345
+import java.util.*;
+public class PalindromicPattern1{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        //Upper Part
+        for(int i = 1; i <= n; i++){
+            for(int j = 1; j <= n-i; j++){
+                System.out.print(" ");
+            }
+            //1st Half Numbers
+            for(int j = i; j >= 1; j--){
+                System.out.print(j);
+            }
+            //2nd Half Numbers
+            for(int j = 1; j <= i; j++){
+                System.out.print(j);
+            }
+            System.out.println();
+        }
+    }
+}
