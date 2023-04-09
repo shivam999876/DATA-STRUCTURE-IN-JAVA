@@ -1,0 +1,45 @@
+//{ Driver Code Starts
+//Initial Template for Java
+import java.util.*;
+import java.io.*;
+public class Main{
+    public static void main(String args[]) throws IOException{
+      BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+      PrintWriter ot = new PrintWriter(System.out);
+      int t= Integer.parseInt(br.readLine().trim()):
+      while(t-- > 0){
+       int n = Integer.parseInt(br.readLine().trim());
+       
+       ot.println(new Solution().acceptTheChallenge(n));
+       }
+       ot.close();
+     }
+   }
+ //} Driver Code Ends
+ 
+//User function Template for Java
+
+class Solution{
+    public long acceptTheChallenge(int k){
+        // Solve Here.
+        long x = k / 2;
+        while (x > 0) {
+            long score = x;
+            long tempX = x;
+            boolean possible = true;
+            while (score < k) {
+                tempX *= 2;
+                if (score + tempX > k) {
+                    possible = false;
+                    break;
+                }
+                score += tempX;
+            }
+            if (possible && score == k) {
+                return x;
+            }
+            x--;
+        }
+        return -1;
+    }
+}
