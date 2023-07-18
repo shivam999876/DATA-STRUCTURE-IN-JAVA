@@ -1,0 +1,48 @@
+//{ Driver Code Starts
+//Initial Template for Java
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+{
+    public static void main(String[] args) throws IOException
+    {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int T = Integer.parseInt(br.readLine().trim());
+        while(T-->0)
+        {
+            String str = br.readLine().trim();
+            Solution ob = new Solution();
+            int ans = ob.LongestRepeatingSubsequence(str);
+            System.out.println(ans);
+        }
+    }
+}
+
+// } Driver Code Ends
+
+
+//User function Template for Java
+
+class Solution
+{
+    public int LongestRepeatingSubsequence(String str)
+    {
+        // code here
+         int n=str.length();
+		    int nichli[]=new int[n+1];
+		    int cur[]=new int[n+1];
+		    for(int i=n;i>=0;i--){
+		        for(int j=n;j>=0;j--){
+		            if(i==n || j==n)cur[j]=0;
+		            else if(str.charAt(i)==str.charAt(j) && i!=j){
+		                cur[j]=1+nichli[j+1];
+		            }
+		            else cur[j]=Math.max(nichli[j],cur[j+1]);
+		        }
+		        nichli=cur.clone();
+		    }
+		    return nichli[0];
+    }
+}
