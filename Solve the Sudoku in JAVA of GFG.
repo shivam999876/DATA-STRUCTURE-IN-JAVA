@@ -1,0 +1,158 @@
+//{ Driver Code Starts
+//Initial Template for Java
+
+import java.util.*;
+import java.io.*;
+import java.lang.*;
+
+class Driver_class
+{
+    public static void main(String args[])
+    {
+        
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        
+        while(t-- > 0)
+        {
+            int grid[][] = new int[9][9];
+            for(int i = 0; i < 9; i++)
+            {
+                for(int j = 0; j < 9; j++)
+                grid[i][j] = sc.nextInt();
+            }
+            
+            Solution ob = new Solution();
+            
+            if(ob.SolveSudoku(grid) == true)
+                ob.printGrid(grid);
+            else
+                System.out.print("NO solution exists");
+            System.out.println();
+            
+        }
+    }
+}
+
+
+
+
+// } Driver Code Ends
+
+
+//User function Template for Java
+
+class Solution
+{
+    //Function to find a solved Sudoku.
+    static boolean SolveSudoku(int grid[][])
+    {
+        int N = 9;
+        int[] cell = findEmptyCell(grid, N);
+        
+        // If all cells are filled, the Sudoku is solved.
+        if (cell[0] == -1)
+            return true;
+        
+        int row = cell[0];
+        int col = cell[1];
+        
+        // Try filling numbers from 1 to 9 in the current empty cell.
+        for (int num = 1; num <= 9; num++)
+        {
+            if (isSafe(grid, row, col, num))
+            {
+                // If the number is safe to place, fill it in the cell.
+                grid[row][col] = num;
+
+                // Recursively check the next empty cell.
+                if (SolveSudoku(grid))
+                    return true;
+
+                // If the current number doesn't lead to a solution, backtrack.
+                grid[row][col] = 0;
+            }
+        }
+        
+        // If no number leads to a solution, return false.
+        return false;
+    }
+
+    // Helper function to find an empty cell in the Sudoku grid.
+    static int[] findEmptyCell(int[][] grid, int N)
+    {
+        int[] cell = new int[] {-1, -1};
+
+        for (int i = 0; i < N; i++)
+        {
+            for (int j = 0; j < N; j++)
+            {
+                if (grid[i][j] == 0)
+                {
+                    cell[0] = i;
+                    cell[1] = j;
+                    return cell;
+                }
+            }
+        }
+
+        return cell;
+    }
+
+    // Helper function to check if it is safe to place the number in the cell.
+    static boolean isSafe(int[][] grid, int row, int col, int num)
+    {
+        return !usedInRow(grid, row, num) &&
+               !usedInCol(grid, col, num) &&
+               !usedInBox(grid, row - row % 3, col - col % 3, num);
+    }
+
+    // Helper function to check if the number is used in the current row.
+    static boolean usedInRow(int[][] grid, int row, int num)
+    {
+        for (int i = 0; i < 9; i++)
+        {
+            if (grid[row][i] == num)
+                return true;
+        }
+        return false;
+    }
+
+    // Helper function to check if the number is used in the current column.
+    static boolean usedInCol(int[][] grid, int col, int num)
+    {
+        for (int i = 0; i < 9; i++)
+        {
+            if (grid[i][col] == num)
+                return true;
+        }
+        return false;
+    }
+
+    // Helper function to check if the number is used in the 3x3 sub-box.
+    static boolean usedInBox(int[][] grid, int boxStartRow, int boxStartCol, int num)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (grid[i + boxStartRow][j + boxStartCol] == num)
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    // Function to print grids of the Sudoku.
+    static void printGrid(int grid[][])
+    {
+        int N = 9;
+        for (int i = 0; i < N; i++)
+        {
+            for (int j = 0; j < N; j++)
+            {
+                System.out.print(grid[i][j] + " ");
+            }
+        }
+    }
+}
